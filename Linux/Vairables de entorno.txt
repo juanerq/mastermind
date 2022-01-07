@@ -1,0 +1,25 @@
+Variables de Entorno
+
+Ej: $HOME
+echo $HOME -> /home/juanerq
+
+Ver variables de entorno
+comando: env
+
+$PATH: donde se almacenan los directorios con programas, cada directorio esta separado por : y podemos poner la ruta de nuestros propios progranas 
+
+Ej: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+.bashrc -> este fichero oculto es la configuración del bash que se ejecuta al abrir la terminal.
+
+[ Operadors ]
+
+&& : si el primer comando(mkdir prueba) que se ejecuta tiene exito se ejecutara el siguiente(echo "Exito").
+|| : si no tiene exito se ejecutara el siguiente
+
+Ej: 
+mkdir prueba && echo "Exito"
+mkdir prueba || echo "Exito"
+
+[ Cambiar host ] 
+sudo nano /etc/host

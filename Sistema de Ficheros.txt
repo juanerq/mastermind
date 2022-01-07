@@ -1,0 +1,10 @@
+/media/juanerq : Donde se encuentra la unidad USB
+
+Montar sistema de ficheros:
+Es hacerlo visible dentro de la gerarquia de directorios en linux
+
+umount ruta : desmontar sistema de ficheros
+
+Ej: umount USB : desmonta el sistema de ficheros de la USB, es decir, ya no estara visible pero seguira en el sistema; no podemos ver el contenido de la USB.
+
+mount /dev/sdb directorio/ : montar sistema de ficheros
