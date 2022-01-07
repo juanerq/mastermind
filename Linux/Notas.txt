@@ -1,0 +1,90 @@
+Redirecciones y Pipes (Tuberías)
+
+stdin  -> standard input  <- 0
+stdout -> standard output <- 1
+stderr -> standard error  <- 2
+
+Ejemplo: Comando echo(imprime texto en terminal). 
+Podemos redirigir la salida de ese texto a un fichero
+
+echo "Hola mundo" > fichero.txt
+ls -l > ficheroLS.txt
+
+> redirigir salida
+< redirigir entrada
+>> redirigir entrada sin sobreescribir (añadir)
+2> redirigir errores
+2>> redirigir error sin sobreescribirlo (añadir)
+
+Tuberia -> |
+
+Nos ayuda a comunicar procesos
+
+Ejemplo: Buscar programa en la lista de programas del sistema operativo
+
+apt list > programas.txt
+grep vsCode programas.txt
+
+Podemos redirigir la salida de apt list como entrada del grep
+
+apt list | grep vsCode 
+
+---[Delimitador]---
+
+Ejemplo:
+producto1 20 40
+producto2 15 25
+prodcuto3 17 18
+
+cut -d " " -f 3 fichero.txt
+-> salida: 40
+	   25
+	   18
+-d " " delimitador
+-f 3 fila
+
+-f 3,5 seleccionar varias filas
+-f 3-5 seleccionar un rango de filas
+-3 3-  seleccionar a partir de la fila ?
+
+---[String Editor]---
+
+Ejemplo: este comando cambio dos o mas espacios por un espacio
+
+sed "s/  */ /g" fichero.txt
+
+expresion regular "s/  */ /g" 
+
+"s/ lo que queremos busca / como lo queremos modificar /global"
+
+
+Ejemplo con tuberia: sed "s/  */ /g" lista.txt | cut -d " " -f 5
+
+---[filtrar la parte de abajo de una salida]---
+
+tail -n +2 fiechero.txt
+
+-n +2 numero de liminea a partir de la que queremos ver(a partir de la linea 2)
+
+comando completo
+
+ls -l | tail -n +2 | sed "s/  */ /g" | cut -d " " -f 9
+
+---[filtrar la parte de arriba de una salida]---
+
+head -n 1 parrafos.txt
+
+
+---[Servicios en segundo plano]---
+
+comando: systemctl (system control)
+
+sudo systemctl stop nombre-servicio --> parar servicio
+sudo systemctl start nombre-servicio --> iniciar servicio
+sudo systemctl status nombre-servicio --> estado del servicio
+
+systemd --> programa que define los procesos que se ejecutan al iniciar el sistema
+
+sudo systemctl enable nombre-servicio --> se ejecutara al iniciar el sistema
+sudo systemctl disable nombre-servicio --> no se ejecutara al iniciar el sistema
+
